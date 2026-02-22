@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+/* ─── Theme tokens ────────────────────────────────────────────────────────── */
+@theme {
+  /* Colours */
+  --color-purple-glow:  #7c3aed;
+  --color-blue-glow:    #2563eb;
+  --color-purple-light: #a78bfa;
+  --color-blue-light:   #60a5fa;
+
+  /* Shadows */
+  --shadow-glow-purple: 0 0 30px rgba(124,58,237,.5), 0 0 60px rgba(124,58,237,.25);
+  --shadow-glow-blue:   0 0 30px rgba(37,99,235,.5),  0 0 60px rgba(37,99,235,.25);
+  --shadow-glow-sm:     0 0 15px rgba(124,58,237,.3);
+  --shadow-card:        0 8px 32px rgba(0,0,0,.4), 0 2px 8px rgba(0,0,0,.3);
+
+  /* Custom animations */
+  --animate-float:       float 6s ease-in-out infinite;
+  --animate-pulse-glow:  pulse-glow 3s ease-in-out infinite;
+  --animate-spin-slow:   spin-slow 8s linear infinite;
+  --animate-marquee:     marquee 35s linear infinite;
+}
+
+/* ─── Keyframes ───────────────────────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-18px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(124,58,237,.35); }
+  50%       { box-shadow: 0 0 50px rgba(124,58,237,.75), 0 0 90px rgba(124,58,237,.35); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ─── Base ────────────────────────────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #050508;
+  color: white;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Scrollbar ───────────────────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 5px; }
+::-webkit-scrollbar-track { background: #050508; }
+::-webkit-scrollbar-thumb { background: rgba(124,58,237,.45); border-radius: 99px; }
+
+/* ─── Selection ───────────────────────────────────────────────────────────── */
+::selection { background: rgba(124,58,237,.3); color: white; }
+
+/* ─── Utility classes ─────────────────────────────────────────────────────── */
+.glass-card {
+  background: rgba(255,255,255,.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,.4), 0 2px 8px rgba(0,0,0,.3);
+}
+
+.glass-card-hover {
+  transition: background .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+.glass-card-hover:hover {
+  background: rgba(255,255,255,.07);
+  border-color: rgba(255,255,255,.14);
+  box-shadow:
+    0 0 30px rgba(124,58,237,.35),
+    0 0 60px rgba(124,58,237,.15),
+    0 8px 32px rgba(0,0,0,.4);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #a78bfa 0%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.glass-input {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: .5rem;
+  color: white;
+  outline: none;
+  transition: border-color .2s ease, background .2s ease;
+}
+.glass-input:focus {
+  border-color: rgba(124,58,237,.5);
+  background: rgba(255,255,255,.08);
+}
+.glass-input::placeholder { color: rgba(255,255,255,.3); }
+
+/* ─── Marquee ─────────────────────────────────────────────────────────────── */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 1.25rem;
+  animation: marquee 35s linear infinite;
+}
+
+/* Reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
