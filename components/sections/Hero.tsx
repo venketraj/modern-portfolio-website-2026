@@ -68,7 +68,7 @@ function useTypewriter(
 /* ── Component ────────────────────────────────────────────────────────────── */
 export default function Hero() {
   const typewritten = useTypewriter(config.taglines);
-  const hasRealAvatar = config.avatar && config.avatar !== '/avatar.png';
+  const hasRealAvatar = config.avatar && config.avatar.trim() !== '';
 
   return (
     <section
