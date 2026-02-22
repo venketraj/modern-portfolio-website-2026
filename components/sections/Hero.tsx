@@ -9,20 +9,22 @@ import GlowButton from '@/components/ui/GlowButton';
 import { staggerContainer, slideInLeft, slideInRight } from '@/lib/animations';
 import { FiArrowRight, FiMapPin } from 'react-icons/fi';
 import {
-  SiReact,
-  SiNextdotjs,
-  SiTypescript,
-  SiNodedotjs,
-  SiTailwindcss,
+  SiPython,
+  SiSnowflake,
+  SiMysql,
+  SiInformatica,
+  SiDatabricks,
 } from 'react-icons/si';
+import { TbBrandAzure } from 'react-icons/tb';
 
 /* ── Floating tech badge data ─────────────────────────────────────────────── */
 const floatingBadges = [
-  { icon: SiTypescript, label: 'TypeScript', color: '#3178C6',  style: { top: '6%',  right: '-6%' }  },
-  { icon: SiReact,      label: 'React',      color: '#61DAFB',  style: { top: '32%', right: '-14%' } },
-  { icon: SiNextdotjs,  label: 'Next.js',    color: '#ffffff',  style: { bottom: '28%', right: '-8%' } },
-  { icon: SiNodedotjs,  label: 'Node.js',    color: '#3EAF7C',  style: { bottom: '4%',  right: '12%' } },
-  { icon: SiTailwindcss,label: 'Tailwind',   color: '#06B6D4',  style: { top: '8%',  left: '-2%' }  },
+  { icon: SiPython,       label: 'Python',       color: '#3776AB',  style: { top: '6%',     right: '-6%'  } },
+  { icon: SiSnowflake,    label: 'Snowflake',    color: '#29B5E8',  style: { top: '32%',    right: '-14%' } },
+  { icon: SiMysql,        label: 'SQL',          color: '#F29111',  style: { bottom: '28%', right: '-8%'  } },
+  { icon: SiInformatica,  label: 'Informatica',  color: '#FF4D00',  style: { bottom: '4%',  right: '12%'  } },
+  { icon: SiDatabricks,   label: 'Databricks',   color: '#FF3621',  style: { top: '8%',     left: '-2%'   } },
+  { icon: TbBrandAzure,   label: 'Azure',        color: '#0078D4',  style: { bottom: '22%', left: '-8%'   } },
 ];
 
 /* ── Typewriter hook ──────────────────────────────────────────────────────── */
@@ -122,25 +124,11 @@ export default function Hero() {
 
             {/* CTAs */}
             <motion.div variants={slideInLeft} className="flex flex-wrap gap-3">
-              <GlowButton
-                href="#projects"
-                variant="primary"
-                onClick={(e) => {
-                  (e as React.MouseEvent).preventDefault();
-                  document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
+              <GlowButton href="#projects" variant="primary">
                 View My Work
                 <FiArrowRight size={15} />
               </GlowButton>
-              <GlowButton
-                href="#contact"
-                variant="outline"
-                onClick={(e) => {
-                  (e as React.MouseEvent).preventDefault();
-                  document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
+              <GlowButton href="#contact" variant="outline">
                 Get In Touch
               </GlowButton>
             </motion.div>

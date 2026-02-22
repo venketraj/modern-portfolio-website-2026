@@ -5,7 +5,7 @@ interface GlowButtonProps {
   children: ReactNode;
   className?: string;
   href?: string;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent) => void;
   variant?: 'primary' | 'secondary' | 'outline';
   type?: 'button' | 'submit';
   disabled?: boolean;
@@ -34,8 +34,14 @@ export default function GlowButton({
   );
 
   if (href) {
+    const isExternal = href.startsWith('http') || href.startsWith('//');
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={base}>
+      <a
+        href={href}
+        onClick={onClick}
+        {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+        className={base}
+      >
         {children}
       </a>
     );

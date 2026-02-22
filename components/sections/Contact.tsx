@@ -7,7 +7,7 @@ import SectionWrapper from '@/components/ui/SectionWrapper';
 import GradientText from '@/components/ui/GradientText';
 import GlowButton from '@/components/ui/GlowButton';
 import { staggerContainer, slideInLeft, slideInRight } from '@/lib/animations';
-import { FiMail, FiSend, FiCheck } from 'react-icons/fi';
+import { FiMail, FiSend, FiCheck, FiAlertCircle } from 'react-icons/fi';
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -16,21 +16,36 @@ export default function Contact() {
     subject: '',
     message: '',
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const body = `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`;
-    const mailto = `mailto:${config.email}?subject=${encodeURIComponent(
-      form.subject || 'Portfolio enquiry',
-    )}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
+    setStatus('sending');
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+          subject: form.subject || 'Portfolio Enquiry',
+          from_name: form.name,
+          replyto: form.email,
+          message: `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`,
+        }),
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error('Failed');
+      setStatus('sent');
+      setForm({ name: '', email: '', subject: '', message: '' });
+      setTimeout(() => setStatus('idle'), 5000);
+    } catch {
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
   };
 
   return (
@@ -162,16 +177,28 @@ export default function Contact() {
               />
             </label>
 
+            {status === 'error' && (
+              <p className="flex items-center gap-2 text-red-400 text-sm">
+                <FiAlertCircle size={14} />
+                Something went wrong. Please try again.
+              </p>
+            )}
+
             <GlowButton
               type="submit"
               variant="primary"
               className="w-full justify-center py-3.5"
-              disabled={submitted}
+              disabled={status === 'sending' || status === 'sent'}
             >
-              {submitted ? (
+              {status === 'sent' ? (
                 <>
                   <FiCheck size={15} />
-                  Opening email client…
+                  Message Sent!
+                </>
+              ) : status === 'sending' ? (
+                <>
+                  <FiSend size={15} />
+                  Sending…
                 </>
               ) : (
                 <>

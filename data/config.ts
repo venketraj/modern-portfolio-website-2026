@@ -1,20 +1,18 @@
 import { FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi';
 import {
-  SiTypescript,
-  SiJavascript,
-  SiReact,
-  SiNextdotjs,
-  SiNodedotjs,
   SiPython,
-  SiTailwindcss,
-  SiPostgresql,
-  SiMongodb,
   SiDocker,
   SiGit,
-  SiFigma,
   SiGraphql,
-  SiAmazon,
+  SiDatabricks,
+  SiSnowflake,
+  SiInformatica,
+  SiMysql,
+  SiGithub,
+  SiLinux,
+  SiAmazon
 } from 'react-icons/si';
+import { TbBrandAzure } from 'react-icons/tb';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // THIS IS THE ONLY FILE YOU NEED TO EDIT TO PERSONALISE YOUR PORTFOLIO.
@@ -22,41 +20,39 @@ import {
 
 export const config = {
   // ── Personal Info ─────────────────────────────────────────────────────────
-  name: 'Alex Johnson',
-  title: 'Full Stack Developer',
+  name: 'Venket Raj S',
+  title: 'ETL Developer',
   taglines: [
-    'Building beautiful web experiences.',
-    'Turning ideas into reality.',
-    'Open to new opportunities.',
+    'Transforming Data Pipelines Today, Engineering AI Agents for Tomorrow',
+    'SQL Craftsman | Python Builder | Snowflake Developer | AI Agent Explorer.',
+    'From ETL to Intelligent Agents — One Query at a Time.',
   ],
-  bio: `I'm a passionate full-stack developer with 5+ years of experience building
-scalable web applications. I love working with modern JavaScript frameworks,
-cloud technologies, and creating pixel-perfect UIs.`,
-  avatar: '/avatar.png',   // Replace with your photo path (or leave blank for initials)
-  location: 'San Francisco, CA',
+  bio: `ETL Developer by craft, Data Engineer by ambition, AI Builder by passion. I architect reliable data pipelines, engineer Snowflake-powered warehouses, and build intelligent AI agents — turning raw data into decisions that matter.`,
+  avatar: '/profile.png',   // Replace with your photo path (or leave blank for initials)
+  location: 'Madurai, IN',
   availableForWork: true,
 
   // ── SEO ───────────────────────────────────────────────────────────────────
-  siteUrl: 'https://alexjohnson.dev',
-  siteTitle: 'Alex Johnson — Full Stack Developer',
+  siteUrl: 'https://venketraj.dev',
+  siteTitle: 'Venket Raj — ETL Developer',
   siteDescription:
-    'Portfolio of Alex Johnson, a full-stack developer specialising in React, Next.js, and Node.js.',
+    'Portfolio of Venket Raj, an ETL developer specialising in Snowflake, Python, and SQL',
   ogImage: '/og-image.png',
 
   // ── Navigation ────────────────────────────────────────────────────────────
   navLinks: [
-    { label: 'About',    href: '#about' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Skills',   href: '#skills' },
-    { label: 'Contact',  href: '#contact' },
+    { label: 'About',      href: '#about' },
+    { label: 'Projects',   href: '#projects' },
+    { label: 'Skills',     href: '#skills' },
+    { label: 'Experience', href: '#experience' },
+    { label: 'Contact',    href: '#contact' },
   ],
 
   // ── Contact ───────────────────────────────────────────────────────────────
-  email: 'hello@alexjohnson.dev',
+  email: 'sundarvenket16@yahoo.com',
   socials: [
-    { label: 'GitHub',   href: 'https://github.com',   icon: FiGithub },
-    { label: 'LinkedIn', href: 'https://linkedin.com', icon: FiLinkedin },
-    { label: 'Twitter',  href: 'https://twitter.com',  icon: FiTwitter },
+    { label: 'GitHub',   href: 'https://github.com/venketraj',   icon: FiGithub },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/venket-raj-s-614518198', icon: FiLinkedin }
   ],
 
   // ── Projects ──────────────────────────────────────────────────────────────
@@ -82,13 +78,13 @@ cloud technologies, and creating pixel-perfect UIs.`,
       featured: true,
     },
     {
-      title: 'DevSync — Team Collaboration',
+      title: 'Code Review Agent',
       description:
-        'Real-time collaborative workspace for dev teams with Kanban boards, code snippet sharing, and Slack integration.',
-      image: '/projects/devsync.jpg',
-      tags: ['React', 'Socket.io', 'GraphQL', 'PostgreSQL'],
-      githubUrl: 'https://github.com',
-      featured: false,
+        'A Streamlit web app that refactors Python or C code using AI — either a local Ollama model or the Mistral Codestral cloud API — following user-defined guidelines. All runs are saved to Supabase for history and replay.',
+      image: '/projects/code-corrector.png',
+      tags: ['Python', 'Streamlit', 'LLM', 'Generative AI'],
+      githubUrl: 'https://github.com/venketraj/AI-Code-Corrector.git',
+      featured: true,
     },
     {
       title: 'NoteAI — Smart Note Taking',
@@ -105,51 +101,53 @@ cloud technologies, and creating pixel-perfect UIs.`,
   // ── Skills ────────────────────────────────────────────────────────────────
   // level: 0–100  |  category: 'Language' | 'Framework' | 'Tool' | 'Cloud'
   skills: [
-    { name: 'TypeScript',   icon: SiTypescript,  level: 95, category: 'Language',  color: 'text-blue-400'   },
-    { name: 'JavaScript',   icon: SiJavascript,  level: 95, category: 'Language',  color: 'text-yellow-400' },
-    { name: 'Python',       icon: SiPython,      level: 75, category: 'Language',  color: 'text-green-400'  },
-    { name: 'React',        icon: SiReact,       level: 95, category: 'Framework', color: 'text-cyan-400'   },
-    { name: 'Next.js',      icon: SiNextdotjs,   level: 90, category: 'Framework', color: 'text-white'      },
-    { name: 'Node.js',      icon: SiNodedotjs,   level: 88, category: 'Framework', color: 'text-green-500'  },
-    { name: 'Tailwind CSS', icon: SiTailwindcss, level: 92, category: 'Framework', color: 'text-sky-400'    },
-    { name: 'GraphQL',      icon: SiGraphql,     level: 78, category: 'Framework', color: 'text-pink-400'   },
-    { name: 'PostgreSQL',   icon: SiPostgresql,  level: 82, category: 'Tool',      color: 'text-blue-300'   },
-    { name: 'MongoDB',      icon: SiMongodb,     level: 80, category: 'Tool',      color: 'text-green-400'  },
-    { name: 'Docker',       icon: SiDocker,      level: 80, category: 'Tool',      color: 'text-sky-500'    },
-    { name: 'Git',          icon: SiGit,         level: 90, category: 'Tool',      color: 'text-orange-400' },
-    { name: 'AWS',          icon: SiAmazon,      level: 75, category: 'Cloud',     color: 'text-orange-300' },
-    { name: 'Figma',        icon: SiFigma,       level: 70, category: 'Tool',      color: 'text-purple-400' },
-  ],
+    { name: 'Snowflake',    icon: SiSnowflake,    level: 70, category: 'Tool',  color: 'text-blue-400'   },
+    { name: 'Informatica',  icon: SiInformatica,  level: 60, category: 'Tool',  color: 'text-yellow-400' },
+    { name: 'Python',       icon: SiPython,       level: 70, category: 'Language',  color: 'text-green-400'  },
+    { name: 'Databricks',   icon: SiDatabricks,   level: 40, category: 'Tool', color: 'text-cyan-400'   },
+    { name: 'Azure',        icon: TbBrandAzure,   level: 50, category: 'Cloud', color: 'text-blue-400'   },
+    { name: 'Linux',        icon: SiLinux,        level: 78, category: 'Tool', color: 'text-pink-400'   },
+    { name: 'SQL',          icon: SiMysql,        level: 70, category: 'Lauguage',      color: 'text-blue-300'   },
+    { name: 'Docker',       icon: SiDocker,       level: 30, category: 'Tool',      color: 'text-sky-500'    },
+    { name: 'Github',       icon: SiGithub,       level: 60, category: 'Tool',      color: 'text-orange-400' },
+    { name: 'AWS Strands',  icon: SiAmazon,       level: 60, category: 'Framework',      color: 'text-orange-400' },
+],
 
   // ── Experience ────────────────────────────────────────────────────────────
   experience: [
     {
-      company: 'TechCorp Inc.',
-      role: 'Senior Full Stack Developer',
-      period: '2022 – Present',
+      company: 'HCL Tech.',
+      logo: '/logos/hcltech.png',                      // e.g. '/logos/hcl.png' — leave empty to use Clearbit
+      companyUrl: 'hcltech.com',
+      role: 'Senior Software Engineer',
+      period: 'Feb 2025 – Present',
       description:
-        'Lead development of the core SaaS platform, mentored junior developers, and architected microservices migration.',
-      skills: ['Next.js', 'TypeScript', 'AWS', 'PostgreSQL'],
+        '● I am responsible for developing various ETL workflows as per the business requirements. Managing the ongoing production data warehouse with various management tools and working on enhancements.Actively volunteer with the AI Club outside my regular work hours, immersing myself in the latest AI concepts and technologies. I contribute to solution development, lead engaging initiatives, and participate in activities that foster both professional growth and innovation within the AI community',
+      skills: ['Informatica', 'SQL', 'Control M', 'Oracle'],
     },
     {
-      company: 'StartupXYZ',
-      role: 'Full Stack Developer',
-      period: '2020 – 2022',
+      company: 'Tata Consultancy Services',
+      logo: '/logos/tcs.png',                      // e.g. '/logos/tcs.png' — leave empty to use Clearbit
+      companyUrl: 'tcs.com',
+      role: 'System Engineer',
+      period: 'Nov 2021 – Feb 2025',
       description:
-        'Built the MVP from scratch, scaled to 50k users, and implemented real-time features using WebSockets.',
-      skills: ['React', 'Node.js', 'MongoDB', 'Docker'],
+        "● Worked on development of a Unified Reporting Platform for JCPenney, processing data for 50+ complex analytical reports across multiple business domains. Applied advanced ETL logic to integrate data from sources like POS, RMS, and Sales, improving data consistency by 25% and reducing load times by 40%. Managed SIT and UAT, ensuring 99.9% data accuracy and cutting post-production issues by 30%. Improved report and dashboard performance by 35%, reducing query response times by 50% and enhancing decision-making efficiency.",
+      skills: ['Snowflake', 'Python', 'SQL', 'Linux', 'Microstrategy'],
     },
     {
-      company: 'Digital Agency',
-      role: 'Frontend Developer',
-      period: '2019 – 2020',
+      company: 'Srushty Global Solution',
+      logo: '/logos/srushty.png',                      // e.g. '/logos/srushty.png' — leave empty to use Clearbit
+      companyUrl: 'srushty.com',
+      role: 'Junior Design Engineer',
+      period: 'Dec 2020 – Oct 2021',
       description:
-        'Delivered pixel-perfect React applications for clients across fintech, healthcare, and e-commerce.',
-      skills: ['React', 'JavaScript', 'CSS', 'Figma'],
+        '● Developed an innovative SMART wristband that monitored heart rate and detected stress levels, resulting in improved user-guided meditation experiences; findings used to fix three biggest causes of user disengagement.It helped to people to reduce stress and improves meditation by using heart pulse and accelerometer sensors.Achieved a 30% improvement in stress reduction and a 20% increase in meditation efficiency for users, as measured by Realtime biometric data analysis',
+      skills: ['Embedded C', 'Microcontroller', 'Raspberry Pi', 'Nordic'],
     },
   ],
 
-  footerText: '© 2025 Alex Johnson. Crafted with Next.js & Tailwind CSS.',
+  footerText: '© 2026 Venket Raj. Crafted with Next.js & Tailwind CSS.',
 } as const;
 
 export type Config = typeof config;
